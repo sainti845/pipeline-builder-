@@ -1,0 +1,272 @@
+/* Toolbar.css - Modern styling for the toolbar component */
+
+.pipeline-toolbar {
+  background: #ffffff;
+  border-bottom: 1px solid #e1e5e9;
+  padding: 12px 20px; /* Reduced padding to save space */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  flex-shrink: 0; /* Prevent toolbar from shrinking */
+  max-height: 200px; /* Limit toolbar height to fit in 100vh */
+  overflow: hidden; /* Hide overflow */
+}
+
+.toolbar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px; /* Reduced from 16px */
+}
+
+.toolbar-title {
+  font-size: 16px; /* Reduced from 18px */
+  font-weight: 600;
+  color: #24292f;
+  margin: 0;
+}
+
+.search-container {
+  position: relative;
+  max-width: 250px; /* Reduced from 300px */
+}
+
+.search-input {
+  width: 100%;
+  padding: 6px 10px 6px 32px; /* Reduced padding */
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  font-size: 13px; /* Reduced from 14px */
+  background: #f6f8fa;
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  background: #ffffff;
+  border-color: #0969da;
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #656d76;
+  width: 14px; /* Reduced from 16px */
+  height: 14px;
+}
+
+.node-categories {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 12px; /* Reduced from 16px */
+  border-bottom: 1px solid #e1e5e9;
+  overflow-x: auto; /* Allow horizontal scroll if needed */
+}
+
+.category-tab {
+  padding: 6px 12px; /* Reduced from 8px 16px */
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #656d76;
+  font-size: 12px; /* Reduced from 13px */
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  white-space: nowrap;
+  flex-shrink: 0; /* Prevent tabs from shrinking */
+}
+
+.category-tab:hover {
+  color: #24292f;
+  background: #f6f8fa;
+}
+
+.category-tab.active {
+  color: #0969da;
+  border-bottom-color: #0969da;
+}
+
+.category-tab.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #0969da;
+}
+
+.nodes-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(100px, 1fr)
+  ); /* Reduced from 120px */
+  gap: 8px; /* Reduced from 12px */
+  max-height: 120px; /* Significantly reduced to fit in 100vh */
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.nodes-grid::-webkit-scrollbar {
+  width: 4px; /* Reduced from 6px */
+}
+
+.nodes-grid::-webkit-scrollbar-track {
+  background: #f6f8fa;
+  border-radius: 2px;
+}
+
+.nodes-grid::-webkit-scrollbar-thumb {
+  background: #d0d7de;
+  border-radius: 2px;
+}
+
+.nodes-grid::-webkit-scrollbar-thumb:hover {
+  background: #656d76;
+}
+
+/* Draggable Node Styles */
+.draggable-node {
+  background: #ffffff;
+  border: 1px solid #e1e5e9;
+  border-radius: 6px; /* Reduced from 8px */
+  padding: 10px 8px; /* Reduced from 16px 12px */
+  text-align: center;
+  cursor: grab;
+  transition: all 0.2s ease;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.draggable-node:hover {
+  border-color: #0969da;
+  box-shadow: 0 4px 12px rgba(9, 105, 218, 0.15);
+  transform: translateY(-2px);
+}
+
+.draggable-node:active {
+  cursor: grabbing;
+  transform: translateY(0);
+}
+
+.draggable-node::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px; /* Reduced from 3px */
+  background: linear-gradient(90deg, #0969da, #8250df);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.draggable-node:hover::before {
+  opacity: 1;
+}
+
+.node-icon {
+  width: 24px; /* Reduced from 32px */
+  height: 24px;
+  margin: 0 auto 6px; /* Reduced margin */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f6f8fa;
+  border-radius: 6px;
+  color: #0969da;
+}
+
+/* SVG Icon Styling */
+.node-icon-svg {
+  width: 100%;
+  height: 100%;
+  color: inherit;
+}
+
+.node-label {
+  font-size: 11px; /* Reduced from 12px */
+  font-weight: 500;
+  color: #24292f;
+  margin: 0;
+  line-height: 1.2; /* Reduced from 1.3 */
+}
+
+/* Node Type Specific Colors */
+.draggable-node.input .node-icon {
+  background: #ddf4d8;
+  color: #1a7f37;
+}
+
+.draggable-node.llm .node-icon {
+  background: #fbefff;
+  color: #8250df;
+}
+
+.draggable-node.output .node-icon {
+  background: #fff1e5;
+  color: #cf222e;
+}
+
+.draggable-node.text .node-icon {
+  background: #eaeef2;
+  color: #656d76;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .pipeline-toolbar {
+    padding: 8px 12px;
+    max-height: 160px; /* Even smaller on mobile */
+  }
+
+  .toolbar-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px; /* Reduced from 12px */
+    margin-bottom: 8px;
+  }
+
+  .search-container {
+    max-width: 100%;
+  }
+
+  .node-categories {
+    overflow-x: auto;
+    padding-bottom: 2px;
+    margin-bottom: 8px;
+  }
+
+  .category-tab {
+    white-space: nowrap;
+    padding: 4px 8px; /* Reduced padding */
+    font-size: 11px;
+  }
+
+  .nodes-grid {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(80px, 1fr)
+    ); /* Smaller on mobile */
+    gap: 6px;
+    max-height: 100px; /* Smaller on mobile */
+  }
+
+  .draggable-node {
+    padding: 8px 6px;
+  }
+
+  .node-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .node-label {
+    font-size: 10px;
+  }
+}

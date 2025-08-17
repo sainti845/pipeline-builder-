@@ -1,0 +1,263 @@
+/* BaseNode.css - Modern styling for the BaseNode component */
+
+.base-node {
+  background: #ffffff;
+  border: 1px solid #e1e5e9;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  min-width: 280px;
+  min-height: 120px;
+  padding: 16px;
+  position: relative;
+  transition: all 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.base-node:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  border-color: #d0d7de;
+}
+
+.base-node.selected {
+  border-color: #0969da;
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.1);
+}
+
+/* Node Header */
+.node-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.node-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #24292f;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.node-title-icon {
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
+}
+
+.node-actions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.base-node:hover .node-actions {
+  opacity: 1;
+}
+
+.action-button {
+  background: none;
+  border: none;
+  padding: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #656d76;
+  transition: all 0.2s ease;
+}
+
+.action-button:hover {
+  background: #f6f8fa;
+  color: #24292f;
+}
+
+/* Node Description */
+.node-description {
+  font-size: 12px;
+  color: #656d76;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+/* Node Fields */
+.node-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #656d76;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.field-input {
+  padding: 6px 8px;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  font-size: 12px;
+  background: #ffffff;
+  transition: border-color 0.2s ease;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: #0969da;
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.1);
+}
+
+.field-select {
+  padding: 6px 8px;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  font-size: 12px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.field-select:focus {
+  outline: none;
+  border-color: #0969da;
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.1);
+}
+
+.field-textarea {
+  padding: 6px 8px;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  font-size: 12px;
+  background: #ffffff;
+  transition: border-color 0.2s ease;
+  font-family: inherit;
+  line-height: 1.5;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.field-textarea:focus {
+  outline: none;
+  border-color: #0969da;
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.1);
+}
+
+/* Node Handles */
+.node-handle {
+  width: 12px;
+  height: 12px;
+  background: #ffffff;
+  border: 2px solid #0969da;
+  border-radius: 50%;
+  position: absolute;
+  transition: all 0.2s ease;
+}
+
+.node-handle:hover {
+  background: #0969da;
+  transform: scale(1.2);
+}
+
+.node-handle.input {
+  left: -6px;
+}
+
+.node-handle.output {
+  right: -6px;
+}
+
+/* Node Type Specific Styles */
+.node-type-input .node-title-icon {
+  color: #0969da;
+}
+
+.node-type-llm .node-title-icon {
+  color: #8250df;
+}
+
+.node-type-output .node-title-icon {
+  color: #1a7f37;
+}
+
+.node-type-text .node-title-icon {
+  color: #cf222e;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .base-node {
+    min-width: 240px;
+    padding: 12px;
+  }
+
+  .node-title {
+    font-size: 13px;
+  }
+
+  .field-input,
+  .field-select {
+    font-size: 11px;
+    padding: 5px 6px;
+  }
+}
+
+/* Animation for new nodes */
+@keyframes nodeAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.base-node.new {
+  animation: nodeAppear 0.3s ease-out;
+}
+
+
+/* Variable labels styling */
+.variable-label {
+  font-size: 11px;
+  color: #888;
+  font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+  transition: color 0.2s;
+}
+
+/* Highlight labels on node hover */
+.base-node:hover .variable-label {
+  color: #aaa;
+}
+
+/* Style for dynamic handles */
+.node-handle.dynamic-handle {
+  background: #555;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #222;
+}
+
+.node-handle.dynamic-handle:hover {
+  background: #3498db;
+}
+
+/* Ensure node has relative positioning */
+.base-node {
+  position: relative;
+  overflow: visible; /* Important: allows labels to show outside node */
+}
