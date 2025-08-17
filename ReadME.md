@@ -1,11 +1,11 @@
 cat > README.md << 'EOF'
-# 🚀 Ayush Kapruwan - Technical Assessment
+# 🚀 Ayush Kapruwan - Project
 
 ## Pipeline Analysis System
 
 A modern React + FastAPI application for creating and analyzing pipeline workflows with DAG validation.
 
-## 📋 Assessment Overview
+## 📋 Project Overview
 
 This project demonstrates:
 - **Frontend Development** - React with modern patterns and state management
